@@ -3,8 +3,8 @@ import React, { Fragment } from 'react';
 import classes from './Modal.module.css'
 
 
-const Backdrop =()=>{
- return <div className={classes.backdrop}></div>
+const Backdrop =(props)=>{
+ return <div className={classes.backdrop} onClick={props.onClick}></div>
 };
 
 
@@ -24,7 +24,7 @@ const Modal = (props)=>{
 
   return (
     <Fragment>
-      {ReactDOM.createPortal(<Backdrop/>,portalElement)}
+      {ReactDOM.createPortal(<Backdrop onClick={props.onClickBackdrop}/>,portalElement)}
       {ReactDOM.createPortal(<ModalContent children={props.children}/>,portalElement)}
     </Fragment>
   )
