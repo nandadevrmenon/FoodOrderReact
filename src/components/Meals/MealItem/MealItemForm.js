@@ -9,7 +9,6 @@ const[itemFormIsValid, setItemFormIsValid] = useState(true);
 
   const formSubmitHandler=(event)=>{
     event.preventDefault();
-    console.log('submit');
 
     const enteredAmount = ItemAmountRef.current.value;
     if(enteredAmount.trim().length ===0) {
@@ -17,12 +16,14 @@ const[itemFormIsValid, setItemFormIsValid] = useState(true);
       return
     }
     const amountNum = +enteredAmount;
-    if(amountNum>5 || amountNum<0){
+    if(amountNum>5 || amountNum<1){
       setItemFormIsValid(false);
       return
     }
 
+    if(!itemFormIsValid) setItemFormIsValid(true);
     props.onAddToCart(amountNum);
+    
 
   }
 
